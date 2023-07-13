@@ -1,0 +1,22 @@
+{
+  "name": "discord-pagerduty-on-call-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helium/discord-pagerduty-on-call-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/helium/discord-pagerduty-on-call-bot/issues"
+  },
+  "homepage": "https://github.com/helium/discord-pagerduty-on-call-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.11.0"
+  }
+}
