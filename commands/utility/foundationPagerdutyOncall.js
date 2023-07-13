@@ -10,8 +10,10 @@ module.exports = {
       Authorization: `Token token=${process.env.FOUNDATION_PAGERDUTY_API_KEY}`,
       'Content-Type': 'application/json'
     });
-    const resJson = await res.json();
-    console.log(resJson);
+
+    console.log(await res.text());
+    console.log(await res.json());
+
 		return interaction.reply(`testing`);
 	},
 };
