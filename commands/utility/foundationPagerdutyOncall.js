@@ -13,7 +13,6 @@ module.exports = {
     });
 
     try {
-      console.log(await res.text());
       console.log(await res.json());
     } catch (err) {
       console.log(err);
