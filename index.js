@@ -27,7 +27,7 @@ for (const folder of commandFolders) {
 	}
 }
 
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(DISCORD_TOKEN);
 
 (async () => {
 	try {
