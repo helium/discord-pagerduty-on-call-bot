@@ -11,8 +11,12 @@ module.exports = {
       'Content-Type': 'application/json'
     });
 
-    console.log(await res.text());
-    console.log(await res.json());
+    try {
+      console.log(await res.text());
+      console.log(await res.json());
+    } catch (err) {
+      console.log(err);
+    }
 
 		return interaction.reply(`testing`);
 	},
