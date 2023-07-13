@@ -6,18 +6,16 @@ module.exports = {
 		.setName('foundation')
 		.setDescription('Display active Foundation On-Call team members.'),
 	async execute(interaction) {
-    const res = await fetch('https://api.pagerduty.com/oncalls', {
-      Accept: 'application/vnd.pagerduty+json;version=2',
-      Authorization: `Token token=${process.env.FOUNDATION_PAGERDUTY_API_KEY}`,
-      'Content-Type': 'application/json'
+    const res = await fetch('https://api.pagerduty.com/oncalls', { 
+      headers: {
+        Accept: 'application/vnd.pagerduty+json;version=2',
+        Authorization: `Token token=${process.env.FOUNDATION_PAGERDUTY_API_KEY}`,
+        'Content-Type': 'application/json'
+      }
     });
 
-    try {
-      console.log(await res.json());
-    } catch (err) {
-      console.log(err);
-    }
+    const json = await res.json()
 
-		return interaction.reply(`testing`);
+		return interaction.reply(`${json.oncalls[0].user.summary}`);
 	},
 };
