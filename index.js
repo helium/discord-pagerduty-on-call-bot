@@ -6,6 +6,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+  console.log(message);
   if (msg.content.indexOf("ping") === 0) { 
     msg.reply('pong');
   }
