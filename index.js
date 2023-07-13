@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+const { Client } = require('discord.js');
 const client = new Client();
 
 client.on('ready', () => {
