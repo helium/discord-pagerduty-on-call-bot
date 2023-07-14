@@ -14,8 +14,15 @@ module.exports = {
       }
     });
 
-    const json = await res.json()
+    const json = await res.json();
 
-		return interaction.reply(`${json.oncalls[0].user.summary}`);
+    let onCallUsers = '';
+    json.oncalls.forEach((group) => {
+      if (group.escalation_level === 1) {
+        onCallUsers += `${group.schedule.summary}: ${group.user.summary}\n`
+      }
+    })
+
+		return interaction.reply(`${onCallUsers}`);
 	},
 };
