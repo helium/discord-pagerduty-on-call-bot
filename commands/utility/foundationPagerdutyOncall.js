@@ -24,10 +24,13 @@ module.exports = {
     json.oncalls.forEach((group) => {
       if (group.escalation_level === 1) {
         const user = group.user.summary;
+        console.log(userMap[user]);
+        console.log(userMap['Darwin Rinderer']);
         onCallUsers += `${group.schedule.summary}: ${user} (${userMap[user]})\n`
       }
     });
 
+    console.log(userMap);
     console.log(userMap);
     console.log(onCallUsers);
 
