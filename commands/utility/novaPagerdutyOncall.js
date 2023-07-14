@@ -40,6 +40,10 @@ module.exports = {
         const user = group.user.summary;
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
+      if (group.schedule && group.schedule.summary === 'IoT Comms') {
+        const user = group.user.summary;
+        onCallUsers += `**${group.schedule.summary}**: ${user}\n`
+      }
     });
 
 		return interaction.reply(`${onCallUsers}`);
