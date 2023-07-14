@@ -25,14 +25,13 @@ module.exports = {
     const { access_token } = await oathRes.json();
 
     const oncallBody = new URLSearchParams();
-    oncallBody.append('linit', '50');
-    const oncallsRes = await fetch('https://api.pagerduty.com/oncalls', { 
+    oncallBody.append('limit', '50');
+    const oncallsRes = await fetch('https://api.pagerduty.com/oncalls?' + oncallBody.toString(), { 
       headers: {
         Accept: 'application/vnd.pagerduty+json;version=2',
         Authorization: `Bearer ${access_token}`,
         'Content-Type': 'application/json'
-      },
-      body: oncallBody.toString()
+      }
     });
 
     const json = await oncallsRes.json();
