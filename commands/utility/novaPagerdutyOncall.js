@@ -43,9 +43,9 @@ module.exports = {
         const user = group.user.summary;
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
-      if (group.escalation_policy && group.escalation_policy.summary && group.escalation_policy.summary === 'IoT Comms-ep') {
+      if (group.schedule && group.schedule.summary === 'IoT Comms') {
         const user = group.user.summary;
-        onCallUsers += `**${group.escalation_policy.summary}**: ${user}\n`
+        onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
     });
 
