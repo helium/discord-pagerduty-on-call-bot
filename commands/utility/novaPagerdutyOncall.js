@@ -36,6 +36,7 @@ module.exports = {
 
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
+      console.log(group)
       if (group.schedule && group.schedule.summary === 'EngOps primary') {
         const user = group.user.summary;
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
@@ -45,6 +46,8 @@ module.exports = {
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
     });
+
+    throw new Error('testing')
 
 		return interaction.reply(`${onCallUsers}`);
 	},
