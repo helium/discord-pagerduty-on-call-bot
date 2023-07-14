@@ -17,6 +17,7 @@ module.exports = {
     });
 
     const json = await res.json();
+    console.log(FOUNDATION_DISCORD_USER_MAP);
     const userMap = JSON.parse(FOUNDATION_DISCORD_USER_MAP);
 
     let onCallUsers = '';
