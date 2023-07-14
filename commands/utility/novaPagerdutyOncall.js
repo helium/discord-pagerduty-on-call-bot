@@ -42,7 +42,7 @@ module.exports = {
       }
       if (group.escalation_policy && group.escalation_policy.summary && group.escalation_policy.summary === 'IoT Comms-ep') {
         const user = group.user.summary;
-        onCallUsers += `**${group.schedule.summary}**: ${user}\n`
+        onCallUsers += `**${group.escalation_policy.summary}**: ${user}\n`
       }
     });
 
