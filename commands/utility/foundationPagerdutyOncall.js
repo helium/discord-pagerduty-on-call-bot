@@ -19,22 +19,13 @@ module.exports = {
     const json = await res.json();
     const userMap = JSON.parse(FOUNDATION_DISCORD_USER_MAP);
 
-    console.log(typeof userMap);
-    Object.entries((entry) => {
-      console.log(entry);
-    });
-
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
       if (group.escalation_level === 1) {
         const user = group.user.summary;
-        onCallUsers += `${group.schedule.summary}: ${user} (${userMap[user]})\n`
+        onCallUsers += `**${group.schedule.summary}**: ${user} (${userMap[user]})\n`
       }
     });
-
-    console.log(userMap);
-    console.log(userMap);
-    console.log(onCallUsers);
 
 		return interaction.reply(`${onCallUsers}`);
 	},
