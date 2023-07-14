@@ -34,6 +34,8 @@ module.exports = {
 
     const json = await oncallsRes.json();
 
+    console.log(json);
+
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
       if (group.schedule && group.schedule.summary === 'EngOps primary') {
@@ -46,7 +48,7 @@ module.exports = {
       }
     });
 
-    console.log(onCallUsers)
+    throw new Error('test')
 
 		return interaction.reply(`${onCallUsers}`);
 	},
