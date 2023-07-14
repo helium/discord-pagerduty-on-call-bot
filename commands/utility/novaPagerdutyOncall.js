@@ -35,7 +35,6 @@ module.exports = {
     });
 
     const json = await oncallsRes.json();
-    console.log(json);
 
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
@@ -48,9 +47,6 @@ module.exports = {
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
     });
-
-    console.log(onCallUsers);
-    throw new Error()
 
 		return interaction.reply(`${onCallUsers}`);
 	},
