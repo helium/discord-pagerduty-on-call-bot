@@ -46,6 +46,10 @@ module.exports = {
       }
     });
 
+    console.log(onCallUsers)
+
+    throw new Error('yeah')
+
 		return interaction.reply(`${onCallUsers}`);
 	},
 };
