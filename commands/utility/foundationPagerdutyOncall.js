@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 
-const { FOUNDATION_DISCORD_USER_MAP, PAGERDUTY_CLIENT_ID, PAGERDUTY_CLIENT_SECRET } = process.env;
+const { FOUNDATION_DISCORD_USER_MAP, FOUNDATION_PAGERDUTY_CLIENT_ID, FOUNDATION_PAGERDUTY_CLIENT_SECRET } = process.env;
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -10,8 +10,8 @@ module.exports = {
 	async execute(interaction) {
     const body = new URLSearchParams();
     body.append('grant_type', 'client_credentials');
-    body.append('client_id', PAGERDUTY_CLIENT_ID);
-    body.append('client_secret', PAGERDUTY_CLIENT_SECRET);
+    body.append('client_id', FOUNDATION_PAGERDUTY_CLIENT_ID);
+    body.append('client_secret', FOUNDATION_PAGERDUTY_CLIENT_SECRET);
     body.append('scope', 'as_account-us.helium-foundation oncalls.read');
 
     const oathRes = await fetch('https://identity.pagerduty.com/oauth/token', { 
