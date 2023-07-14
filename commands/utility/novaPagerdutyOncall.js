@@ -8,32 +8,34 @@ module.exports = {
 		.setName('nova-oncall')
 		.setDescription('Display active Nova On-Call team members.'),
 	async execute(interaction) {
-    const body = new URLSearchParams();
-    body.append('grant_type', 'client_credentials');
-    body.append('client_id', NOVA_PAGERDUTY_CLIENT_ID);
-    body.append('client_secret', NOVA_PAGERDUTY_CLIENT_SECRET);
-    body.append('scope', 'as_account-us.helium-inc oncalls.read');
+    const tokenBody = new URLSearchParams();
+    tokenBody.append('grant_type', 'client_credentials');
+    tokenBody.append('client_id', NOVA_PAGERDUTY_CLIENT_ID);
+    tokenBody.append('client_secret', NOVA_PAGERDUTY_CLIENT_SECRET);
+    tokenBody.append('scope', 'as_account-us.helium-inc oncalls.read');
 
     const oathRes = await fetch('https://identity.pagerduty.com/oauth/token', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: body.toString()
+      body: tokenBody.toString()
     });
 
     const { access_token } = await oathRes.json();
-    
+
+    const oncallBody = new URLSearchParams();
+    oncallBody.append('linit', '50');
     const oncallsRes = await fetch('https://api.pagerduty.com/oncalls', { 
       headers: {
         Accept: 'application/vnd.pagerduty+json;version=2',
         Authorization: `Bearer ${access_token}`,
         'Content-Type': 'application/json'
-      }
+      },
+      body: oncallBody.toString()
     });
 
     const json = await oncallsRes.json();
-
     console.log(json);
 
     let onCallUsers = '';
@@ -48,7 +50,8 @@ module.exports = {
       }
     });
 
-    throw new Error('test')
+    console.log(onCallUsers);
+    throw new Error()
 
 		return interaction.reply(`${onCallUsers}`);
 	},
