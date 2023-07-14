@@ -36,7 +36,7 @@ module.exports = {
 
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
-      if (group.schedule.summary === 'EngOps primary') {
+      if (group.schedule && group.schedule.summary === 'EngOps primary') {
         const user = group.user.summary;
         onCallUsers += `**${group.schedule.summary}**: ${user}\n`
       }
