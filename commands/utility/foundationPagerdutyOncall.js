@@ -5,7 +5,7 @@ const { FOUNDATION_DISCORD_USER_MAP, FOUNDATION_PAGERDUTY_API_KEY } = process.en
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('foundation')
+		.setName('foundation-oncall')
 		.setDescription('Display active Foundation On-Call team members.'),
 	async execute(interaction) {
     const res = await fetch('https://api.pagerduty.com/oncalls', { 
