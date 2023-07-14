@@ -17,16 +17,17 @@ module.exports = {
     });
 
     const json = await res.json();
-    console.log(FOUNDATION_DISCORD_USER_MAP);
     const userMap = JSON.parse(FOUNDATION_DISCORD_USER_MAP);
+
+    console.log(typeof userMap);
+    Object.entries((entry) => {
+      console.log(entry);
+    });
 
     let onCallUsers = '';
     json.oncalls.forEach((group) => {
       if (group.escalation_level === 1) {
         const user = group.user.summary;
-        console.log(user);
-        console.log(userMap[user]);
-        console.log(userMap['Darwin Rinderer']);
         onCallUsers += `${group.schedule.summary}: ${user} (${userMap[user]})\n`
       }
     });
