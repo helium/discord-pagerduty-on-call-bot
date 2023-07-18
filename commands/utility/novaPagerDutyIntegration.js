@@ -1,13 +1,13 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const { FOUNDATION_PAGERDUTY_INTEGRATIONS } = process.env;
+const { NOVA_PAGERDUTY_INTEGRATIONS } = process.env;
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('foundation-pd-access')
-		.setDescription('Display Foundation PagerDuty email trigger endpoints.'),
+		.setName('nova-pd-access')
+		.setDescription('Display Nova PagerDuty email trigger endpoints.'),
 	async execute(interaction) {
-    const integrationMap = JSON.parse(FOUNDATION_PAGERDUTY_INTEGRATIONS);
+    const integrationMap = JSON.parse(NOVA_PAGERDUTY_INTEGRATIONS);
 
     let integrations = '';
     Object.entries(integrationMap).forEach((entry) => {
